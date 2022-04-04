@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECMAScript6</title>
+    <script>
+        let a =10; 
+        console.log(a);
+
+        const b = 10; //상수라서 변경 안됨
+        // b=20;
+        // console.log(b); 
+
+        // 화살표 함수, 람다식 
+        const x = (x, y) => x*y;
+        // 중괄호를 사용하면 리턴을 해줘야함. 여러줄 코딩할때 사용
+        // const x = (x, y) => {return x * y};
+        console.log(x(10,2));
+
+        var y = function(x,y){return x*y;}
+        function z(x,y){ return x*y; }
+
+        // Class 
+        class Car {
+            constructor(name, year){
+                this.name = name;
+                this.year = year;
+            }
+        }
+        const mycar1 = new car("소나타", 2021);
+        console.log(mycar1.name);
+        console.log(mycar1.year);
+
+        // 구조분해할당(Destructuring Assingment)
+        let c,d;
+        [c, d] = [10, 20];
+        console.log(c);
+        console.log(d);
+
+        [c, d, ...rest] = [10, 20, 30, 40, 50]; //배열 구조분해, spread syntax 같이 사용
+        console.log(rest);
+        ({c, d}={c:200, d:300}); //객체 구조분해
+        console.log(c);
+        console.log(d);
+
+        ({c, d, ...rest} = {a: 10, b: 20, c: 30, d: 40}); //객체구조분해, 전개구문과 같이 사용
+        console.log(rest); //{a: 10, b: 20}
+        
+        // 전개구문(Spread Syntax)
+        function sum(x, y, z) {
+        return x + y + z;
+        }
+
+        const numbers = [1, 2, 3];
+        console.log(sum(...numbers));
+        // expected output: 6
+        console.log(sum.apply(null, numbers)); //전개구문과 유사한 역할.
+
+        var arr = [1, 2, 3]; //배열
+        var arr2 = [...arr]; //arr.slice()와 유사 배열을 복사
+        arr2.push(4);
+
+        var obj1 = {foo:'bar', x:42};
+        var obj2 = {foo:'baz', y:13};
+
+        var clonedobj = {...obj1};// 객체를 복사
+        // object { foo: "bar", x:42}
+        var mergedobj = {...obj1, ...obj2}; //객체를 합침. foo는 덮어써짐
+        // object { foo: "baz", x: 42, y: 13}
+
+
+        /* map은 ECMAScript5에서 도입 */
+        const array1 = [1, 4, 9, 16];
+
+        // pass a function to map
+        const map1 = array1.map(x => x * 2);
+        console.log(map1);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
