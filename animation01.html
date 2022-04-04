@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                $("#box1").hide();
+                console.log("test");
+            });
+            $("#btn2").click(function(){
+                $("#box1").show();
+            });
+            $("#btn3").click(function(){
+                $("#box1").slideUp();
+            });
+            $("#btn4").click(function(){
+                $("#box1").slideDown();
+            });
+            $("#btn5").click(function(){
+                $("#box1").toggle();
+            });
+            $("#btn6").click(function(){
+                $("#box1").slideToggle();
+            });
+            $("#btn7").click(function(){
+                $("#box1").fadeIn();
+            });
+            $("#btn8").click(function(){
+                $("#box1").fadeOut();
+            });
+            $("#btn9").click(function(){
+                $("#box1").fadeToggle();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="box1" style="width: 100px; height: 100px; background-color: red;">box1</div>
+    <button id="btn1">hide</button>
+    <button id="btn2">show</button>
+    <button id="btn3">slideUp</button>
+    <button id="btn4">slideDown</button>
+    <button id="btn5">toggle</button>
+    <button id="btn6">slideToggle</button>
+    <button id="btn7">fadeIn</button>
+    <button id="btn8">fadeOut</button>
+    <button id="btn9">fadeToggle</button>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+    li{list-style: none;}    
+</style>
+<script>
+function setKeyword(keyword){
+    document.form1.keyword.value=keyword;
+    document.getElementById("txtHint").style.display="none";
+}    
+    
+function showHint(str) {
+    if (str.length == 0) { 
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                //document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                var output="<ul>";
+                var keywords=xmlhttp.responseText.split(",");
+                for(var i=0;i<keywords.length;i++){
+                    output+="<li><a href='#' onClick='setKeyword(\""+keywords[i]+"\")'>"+keywords[i]+"</a></li>";
+                }
+                output+="</ul>"
+                
+               document.getElementById("txtHint").style.display="block"; document.getElementById("txtHint").innerHTML=output;
+            }
+        };
+        xmlhttp.open("GET", "ajax.php?q=" + str, true);
+        xmlhttp.send();
+    }
+}
+</script>
+</head>
+<body>
+
+
+<form name="form1"> 
+<input type="text" name="keyword" placeholder="검색어를 입력하세요" onkeyup="showHint(this.value)">
+</form>
+<div id="txtHint" style="display:none;"></div>
+</body>
+</html>

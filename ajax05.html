@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js></script>
+    <script>
+        $(function(){
+            $.ajax({
+                url : "http://simdaesung.dothome.co.kr/ajaxDB3.php", //서버주소
+                dataType:"json", //서버에서 보내오는 데이터 형식
+                success:function(data){ //서버에서 데이터가 정상적으로 왔을 때 실행
+                    // 데이터를 받은 이후 해야할 작업을 여기에 코딩
+                    if(data.length>0){
+                        var tb = $("<table />");
+                        for(var i in data){ //i는 index임
+                            var id = data[i].id;
+                            var name = data[i].name;
+                            var email = data[i].email;
+
+                            var row = $("<tr />").append(
+                                $("<td />").text(id),
+                                $("<td />").text(name),
+                                $("<td />").text(email),
+                            );
+                            tb.append(row);
+                        }
+                        $(".wrap").append(tb);
+                    }
+                }
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="wrap"></div>
+    <table>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+</body>
+</html>

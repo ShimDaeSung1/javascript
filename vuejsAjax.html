@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>webpos-do</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+   
+    <script>
+        $(document).ready(function(){   
+
+            console.log("zzzzzzzzzzzz");    
+
+                var app= new Vue({
+                    el: '#app',
+                    data: {
+                        id:"",
+                        name:"",
+                        address:""
+                        
+                    },
+                    methods:{
+                        getMember:function(){
+                            $.ajax({
+                            url:"http://pjs.dothome.co.kr/ajaxDB3.php?id=hkd",
+                            dataType:"json",
+                            success:function(data){
+                                
+                                console.log(data);
+                            
+                                app.id=data.id;
+                                app.name=data.name;
+                                app.address=data.address;
+                
+                                }
+                            });
+                        },
+                        updateMember:function(){
+                            console.log("==================");    
+                            var frmData=$("#frm1").serialize();//폼에 입력한 값 데이터화
+
+                            
+                            $.ajax({
+                                type:"POST",
+                                url:"http://pjs.dothome.co.kr/memberUpdate.php",
+                                data:frmData, //전송하는 데이터
+                                success:function(res){                                            
+                                    if(res){                           
+                                        console.log(res.message);  
+                                        $("#message").html(res.message);                        
+                                    }                                
+                                }
+                            });
+                        }    
+
+                    }
+                        
+
+
+                });
+            
+            app.getMember();
+
+            // $("#modify").on("click",function(){
+                
+            //     console.log("==================");    
+            //     var frmData=$("#frm1").serialize();//폼에 입력한 값 데이터화
+
+                
+            //     $.ajax({
+            //         type:"POST",
+            //         url:"http://pjs.dothome.co.kr/memberUpdate.php",
+            //         data:frmData,
+            //         success:function(res){                                            
+            //             if(res){                           
+            //                 console.log(res.message);  
+            //                 $("#message").html(res.message);                        
+            //             }                                
+            //         }
+            //     });
+            // });    
+
+
+
+
+        });
+    </script>
+
+  </head>
+  <body>
+   <div id='app'>
+        <form id="frm1">
+                <input type="text" name="id" v-model="id" readonly><br>
+                name <input type="text" name="name" v-model="name"><br>
+                address <input type="text" name="address" v-model="address"><br>
+                <input id="modify" type="button" v-on:click="updateMember" value="회원정보수정">
+        </form>
+        <div id="message"></div>
+	</div>
+   
+    
+  </body>
+</html>

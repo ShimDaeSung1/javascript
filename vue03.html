@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        window.onload=function(){
+            var app=new Vue({
+                el:"#app",
+                data:{
+                    name : "Vue",
+                    smile : true,
+                    feelsgood : "img/pic01.jpg",
+                    feelsbad : "img/pic02.jpg"
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello, {{ name }}</h1>
+        <input type="text" v-model="name"/><br>
+        <input type="checkbox" v-model="smile"/>웃어요 개구리<br>
+        <img v-bind:src="smile ? feelsgood : feelsbad">
+    </div>
+</body>
+</html>

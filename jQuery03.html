@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Append</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // $("#box1").append("<h1>append</h1>");
+            // $("#box1").prepend("<h1>prepend</h1>");
+            $("#box1").before("<h1>before</h1>");
+            $("#box1").after("<h1>after</h1>");
+            $("<h1>appendTo</h1>").appendTo("#box1");
+            $("<h1>prependTo</h1>").prependTo("#box1");
+        });
+    </script>
+</head>
+<body>
+    <div id="box1" style="background-color: red;">
+        Box1
+    </div>
+</body>
+</html>

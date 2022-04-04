@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> Ajax </title>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js></script>
+<script>
+$(function() {
+	$.ajax({
+		url:"http://simdaesung.dothome.co.kr/ajaxDB.php",
+		dataType:"xml",
+		success:function(data) {
+			var $data = $(data).find("product");
+			if($data.length > 0) {
+				var tb = $("<table />");
+				$.each($data, function(i, o) {
+					var name = $(o).find("name").text();
+					var price = $(o).find("price").text();
+					
+					var row = $("<tr />").append(
+						$("<td />").text(name),
+						$("<td />").text(price),
+					);
+
+					tb.append(row);
+				});
+				$(".wrap").append(tb);
+			}
+		}
+	});
+});
+</script>
+</head>
+<body>
+	<div class="wrap"></div>
+</body>
+</html>

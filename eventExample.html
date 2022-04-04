@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event처리 정리</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        function func1(){
+            console.log("btn1");
+        };
+        // btn2를 찾아온다 (자바스크립트 코드), 자바스크립트는 순서대로 실행하기 때문에
+        // document.getElementById의 시점에는 btn2이 아직 생기지 않아 오류가 생긴다.
+        // document.getElementById("btn2").onclick=function(){
+        //     console.log("btn2");
+        // };
+        // 윈도우에서 로드가 됐을 때(body태그의 모든게 로드가 됐을때 load이벤트가 발생함. 그 때 함수가 실행된다.)
+        window.onload=function(){
+            document.getElementById("btn2").onclick=function(){
+                console.log("btn2");   
+            };
+        };
+         // 위처럼 쓰거나 아래 btn2아래에 써줘야함
+    </script>
+    <script>
+        // 문서가 준비되면 ($()은 jQuery 코드)
+        $(document).ready(function(){
+            $("#btn3").click(function(){
+                console.log("btn3");
+            });
+            $("#btn4").on("click",function(){
+                console.log("btn4");
+            });
+        });
+        //위 jQuery코드는 그 위 자바스크립트의 window.onload와 같음
+    </script>
+</head>
+<body>
+    <button id ="btn1" onclick="func1()">btn1</button>
+    <button id ="btn2">btn2</button><br>
+    <button id ="btn3">btn3</button><br>
+    <button id ="btn4">btn4</button><br>
+</body>
+</html>

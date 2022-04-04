@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){}); //정식 코드
+        $(function(){}); //약식
+
+        $(document).ready(function(){
+            // menu의 li를 다 찾고, 거기서 eq(2), 즉 nth-chile(2)
+            $("#menu li").eq(2).css({"background-color":"#ff0", "color" : "aqua"});
+            $("#menu li:nth-child(4)").css("background-color","#00ff00");
+            $("#menu li:nth-child(4)").css("color","red");
+            // $("h1").css("font-size","50px");
+            $("#btn1").click(function(){
+                $("h1").css("font-size","10px");
+            });
+
+            $(".box").css("background-color","darkred")
+        });
+    </script>
+    <style>
+        h1{font-size: 50px;}
+    </style>
+</head>
+<body>
+    <h1>탐색선택자</h1>
+    <ul id="menu">
+        <li>내용1</li>
+        <li>내용2</li>
+        <li>내용3</li>
+        <li>내용4</li>
+        <li>내용5</li>
+    </ul>
+
+    <input id ="btn1" type="button" value="폰트크기변경">
+
+    <div class="box">컨텐츠</div>
+    <div class="box">컨텐츠</div>
+    <div class="box">컨텐츠</div>
+    <div class="box">컨텐츠</div>
+    <div class="box">컨텐츠</div>
+</body>
+</html>

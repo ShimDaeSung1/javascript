@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <script>
+        var site = prompt("검색사이트를 입력하세요","");
+        var keyword= prompt("검색어를 입력하세요","");
+        var url;
+
+        switch(site){
+            case "구글": url = "https://www.google.com/search?q="+keyword;
+            break;
+            case "네이버": url = "https://search.naver.com/search.naver?where=nexearch&sm=top_sug.pre&fbm=1&acr=1&acq=java&qdt=0&ie=utf8&query="+keyword
+            break;
+            default: alert("구글과 네이버 중 하나를 선택하세요"); 
+        }
+
+        if(url){
+            location.href = url;
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script> -->
+    <script>
+        // 윈도우가 실행이 되면
+        window.onload=function(){
+            var app = new Vue({
+            el: '#app', // 어떤 엘리먼트에 적용을 할 지 정합니다
+            // data 는 해당 뷰에서 사용할 정보를 지닙니다
+            data: {
+                name: 'World',
+                address: '서울'
+            }   
+        });
+
+        var app2 = new Vue({
+            el: "#app2",
+            data: {name : "홍길동", address :"<i>서울</>", visible :false, 
+                value:4,
+                feelsgood: "img/pic01.jpg"
+            }
+        });
+    };
+    </script>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello, {{ name }}</h1>
+        {{ address }} 에 사세요?
+    </div>
+    <div id="app2">
+        <h1>안녕하세요?<span v-text="name"></span>님</h1>
+            주소 : <span v-show = "visible" v-html="address"></span>
+            <h1 v-if="value>5">value가 5보다 큽니다.</h1>
+            <h1 v-else-if="value==5">값이 5네요</h1>
+            <h1 v-else>value가 5보다 작습니다.</h1>
+            <pre>                       작성한 형식
+                 그     대     로        출력됩니다.
+            </pre>
+            <h1 v-pre>{{ 반갑습니다. }}</h1>
+            <img v-bind:src="feelsgood" width="300" height="200"/>
+            <img :src="feelsgood" width="300" height="200"/>
+    </div>
+</body>
+</html>

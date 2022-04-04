@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>delegate</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                $("#box1").append("<button>버튼</button>");
+            });
+            // box1의 하위, 즉 자식(button)을 클릭시 이벤트 생성, 자식에게 책임을 넘김
+            $("#box1").delegate("button","click",function(){
+                console.log("클릭됨");
+            });
+            // $("#box").on("click","button",function(){
+            //     console.log("클릭됨");
+            // });
+            $("#btn2").click(function(){
+                $("#ul1").append("<li>아이템</li>")
+            });
+            // ul1의 앞으로 생길 자식(li)를 클릭시 ul1에 <li>delegate</li>를 추가
+            $("#ul1").delegate("li","click",function(){
+                $("#ul1").append("<li>delegate</li>")
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div id="box1">
+
+    </div>
+    <button id="btn1">btn1</button>
+    <ul id="ul1">
+        
+    </ul>
+    <button id="btn2">btn2</button>
+</body>
+</html>

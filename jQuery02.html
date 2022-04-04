@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>each</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            var obj=[{"area":"서울"},{"area":"부산"},{"area":"전주"}];
+            $(obj).each(function(i,o){
+                console.log(i+":",o.area);
+                console.log(i+":", $(this)[0].area);
+            });  
+            $.each(obj, function(i,o){
+                console.log($(this)[0].area);
+            });
+            console.log($(".title1"));
+            console.log($(".title2"));    
+            console.log($("#title"));
+
+            var result_1=$("#sec_1").html();
+            console.log(result_1);
+            $("#sec_1")
+        });
+    </script>
+</head>
+<body>
+    <h1 id="title">jQuery</h1>
+    <h1 class="title1">jQuery</h1>
+    <h1 class="title2">jQuery</h1>
+    <h1 class="title2">jQuery</h1>
+
+    <h1>
+        <strong>객체 조작 및 생성</strong>
+    </h1>
+    <section id="sec_1">
+        <h2>
+            <em>html()</em>
+        </h2>
+        <p>내용</p>
+    </section>
+
+</body>
+</html>

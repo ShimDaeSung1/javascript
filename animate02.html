@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animate</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $(".txt1").animate({marginLeft:"200px"},5000)
+                .animate({marginTop:"200px"},5000)
+                .animate({marginLeft:0},5000)
+                .animate({marginTop:0},5000);
+            $("#btn1").click(function(){
+                // stop(clearQueue, finish), (뒤에 있는 애니메이션 다 제거, 끝으로 이동)
+                $(".txt1").stop(true, true);
+            });
+            $("#btn2").click(function(){
+                $(".txt1").stop(true,false);
+            });
+            $("#btn3").click(function(){
+                $(".txt1").stop(false,true);
+            }); 
+            $("#btn3").click(function(){
+                // $(".txt1").stop(false,false);
+                $(".txt1").stop();
+            });  
+        });
+    </script>
+</head>
+<body>
+    <p>
+        <button id="btn1">stop(true, true)</button>
+        <button id="btn2">stop(true, false)</button>
+        <button id="btn3">stop(false, true)</button>
+        <button id="btn4">stop(false, false)</button>
+    </p>
+    <span class="txt1">내용1</span>
+    
+</body>
+</html>

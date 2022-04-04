@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animate CSS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link href="css/animate.min.css" rel="stylesheet" type="text/css">
+    <script>
+        $(document).ready(function(){
+            $(window).on("scroll",function(){
+                console.log($(this).scrollTop());
+                if($(this).scrollTop()>1500){
+                    $("#text1").css("display","block");
+                    $("#text1").addClass("animate__fadeInLeft");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="box1" style="height: 2000px;"></div>
+    <!-- fadeInLeft 부분만 animate.style 사이트에서 알아온 걸로 바꿔주면 끝 -->
+    <!-- <div class="animate__animated animate__bounce animate__fadeInLeft">Animate CSS</div> -->
+    <div id="text1" style = "display : none;" class="animate__animated">
+        <h1>Animate CSS</h1>    
+    </div>
+    <div id="box2" style="height: 2000px;"></div>
+</body>
+</html>
